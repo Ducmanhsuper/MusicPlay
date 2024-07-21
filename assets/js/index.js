@@ -63,12 +63,15 @@ app = {
             AudioSong.pause();
             Pausebtn.style.display = "none";
             PlayBtn.style.display = "flex";
+            SongThumb.style.transform = "rotate(0deg)";
         }
         const songNext = async function () {
             app.currentIndex = app.currentIndex + 1;
             if (app.currentIndex > Songs.length - 1) {
                 app.currentIndex = 0;
             }
+            Pausebtn.style.display = "flex";
+            PlayBtn.style.display = "none";
             await app.getCurrentSong();
             await app.loadcurrentSong();
 
@@ -78,6 +81,8 @@ app = {
             if (app.currentIndex < 0) {
                 app.currentIndex = Songs.length - 1;
             }
+            Pausebtn.style.display = "flex";
+            PlayBtn.style.display = "none";
             await app.getCurrentSong();
             await app.loadcurrentSong();
 
