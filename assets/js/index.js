@@ -82,6 +82,13 @@ app = {
             await app.loadcurrentSong();
 
         }
+
+        AudioSong.played = function () {
+            console.log("C");
+        }
+        // if (AudioSong.onplay)
+
+
         //  Action 
         PlayBtn.onclick = function () {
             SongPlay();
@@ -120,10 +127,20 @@ app = {
         const AudioCurrentSong = await app.loadcurrentSong();
         AudioCurrentSong.ontimeupdate = function () {
             const currentTime = (AudioCurrentSong.currentTime / 60).toFixed(2);
+            if (currentTime > 0) {
+                SongThumb.style.transition = "400s";
+                SongThumb.style.transform = "rotate(72000deg)";
+            }
             const Fulltime = (AudioCurrentSong.duration / 60).toFixed(2);
+
+            if (currentTime >= AudioCurrentSong.duration) {
+                app.songNext();
+                SongThumb.style.transform = "rotate(0deg)";
+            }
             const currentVal = currentTime;
             const max = Fulltime;
             range.style.backgroundSize = currentVal / Fulltime * 100 + "% 100%";
+
         }
 
 

@@ -50,6 +50,8 @@ body {
     background-image: url("../img/musicthumb.jpg");
     background-size: cover;
     border-radius: 50%;
+    /* transition: step-start 1s;
+    transform: rotate(45deg); */
 }
 
 .SongNumber,
